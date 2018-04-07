@@ -37,8 +37,29 @@ class BranchUser extends Model
 
 
 
+
+
+    public function getClass(){
+
+        return $this->hasOne('App\Model\SelectClass','select_class_id');
+    }
+
+
+    public function getRole(){
+
+        return $this->hasOne('App\Model\SelectRole','select_role_id');
+    }
+
+
+    public function getBranch(){
+        return $this->belongsTo('App\Model\Branch','branch_id','id');
+    }
+
+
+
     public function getUser(){
         return $this->belongsTo('App\Model\User','user_id','id');
     }
+
 
 }

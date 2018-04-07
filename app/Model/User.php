@@ -94,6 +94,17 @@ class User extends Authenticatable
 
     }
 
+    public function getThreads(){
+        return $this->hasMany('App\Model\Thread', 'creator_user_id','id');
+    }
+
+
+
+    public function getReplies(){
+        return $this->hasMany('App\Model\Reply','user_id','id');
+    }
+
+
 
 
 }

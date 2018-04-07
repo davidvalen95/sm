@@ -43,6 +43,11 @@ class Branch extends Model
 
     }
 
+    public function getUsers(){
+        return $this->hasMany('App\Model\BranchUser', 'branch_id','id');
+
+    }
+
 
 
 
