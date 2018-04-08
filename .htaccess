@@ -1,0 +1,20 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews
+    </IfModule>
+
+    RewriteEngine On
+
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+    RewriteCond %{REQUEST_URI} !(all|\.map|\.ttc|\.ttf|\.woff|\.woff2|\.eot|\.css|\.js|\.png|\.mp4|\.jpg|\.jpeg|\.gif|robots\.txt)$ [NC]
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+
+#
+#
+#    RewriteCond %{HTTP:Authorization} ^(.*)
+#    RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
+</IfModule>
