@@ -1,0 +1,159 @@
+
+
+
+
+
+
+
+#page-home {
+
+  .segment1 {
+
+    height: 100%;
+    position: relative;
+    background: black url("../image/page/home/segment1-background.png?v=#{$v}");
+    background-size: 100% 100%;
+
+  }
+
+
+  .segment2 {
+
+    background: #DC9440;
+    //height: 500px;
+    position: relative;
+    padding-bottom: 60px;
+    @include md-up {
+      padding-bottom: 0px;
+
+    }
+    @include xl-up {
+      padding-bottom: 20px;
+
+    }
+
+    .container {
+      padding-bottom: 0;
+    }
+    .verse {
+      color: $text-color-2;
+    }
+
+    .flag {
+      height: 400px;
+      position: relative;
+      img {
+        position: absolute;;
+        bottom: 0;
+      }
+    }
+  }
+
+  .segment3 {
+
+    min-height: 100%;
+    position: relative;
+    margin-top: -1px;
+
+    background: #000 url("../image/page/home/segment3-background.png?v=#{$v}");
+    background-size: 100% 100%;
+
+    * {
+      color: white;
+    }
+
+    .shapeTop {
+      position: absolute;
+      bottom: 100%;
+      left: 0;
+      right: 0;
+      -webkit-transform: translateY(3px);
+      -moz-transform: translateY(3px);
+      -ms-transform: translateY(3px);
+      -o-transform: translateY(3px);
+      transform: translateY(3px);
+      width: 100%;
+      z-index: 9999;
+      img {
+        width: 100%;
+        //height: 175px;
+      }
+    }
+
+  }
+
+  .segment4 {
+
+    background: #789A3E;
+    //min-height: 100%;
+    position: relative;
+    margin-top: -1px;
+
+    min-height: 600px;
+
+    .shapeBottom {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      width: 100%;
+      z-index: 9999;
+      img {
+        z-index: 9999;
+
+        width: 100%;
+        //height: 175px;
+      }
+    }
+
+    .contactUsForm {
+
+      label {
+        color: #ddd;
+
+      }
+      input, textarea {
+        background: #7FB24B;
+        color: $text-color-2;
+
+        &::placeholder {
+          color: #ddd;
+
+        }
+        &::-moz-placeholder {
+          color: #ddd;
+
+        }
+        &:-ms-input-placeholder {
+          color: #ddd;
+
+        }
+      }
+
+      .submit {
+
+        background: #FFCC19;
+        color: white;
+        float: right;
+        border-radius: 20px;
+        padding: 8px 20px;
+
+      }
+    }
+
+  }
+
+  .segment5 {
+    position: relative;
+    z-index: 4444;
+    padding-top: 100px;
+    height: 600px;
+    width: 100%;
+    background: #F7F7F7;
+    .map {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+}

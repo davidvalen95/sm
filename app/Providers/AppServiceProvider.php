@@ -28,6 +28,27 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->requireAll("app/Helper/",0);
+//        debug();
+
+        if ($this->app->environment() == 'local') {
+            $this->app->register('Laracasts\Generators\GeneratorsServiceProvider');
+        }
+    }
+
+    protected function requireAll($dir, $depth=0) {
+        if ($depth > 10) {
+            return;
+        }
+        // require all php files
+        $scan = glob("$dir/*");
+        foreach ($scan as $path) {
+            if (preg_match('/\.php$/', $path)) {
+                require_once $path;
+            }
+            elseif (is_dir($path)) {
+                $this->requireAll($path, $depth+1);
+            }
+        }
     }
 }

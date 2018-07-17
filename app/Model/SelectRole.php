@@ -26,4 +26,11 @@ class SelectRole extends Model
 
     protected $table = 'select_role';
     protected $fillable = ['key','value'];
+
+    public static function getTeacher(){
+        return SelectRole::where('value','teacher');
+    }
+    public static function getPupil(){
+        return SelectRole::where('value','pupil');
+    }
 }

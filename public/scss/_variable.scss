@@ -1,0 +1,29 @@
+$text-color-1: #F18022;
+$text-color-2: #F9F4ED;
+$text-color-3: #808080;
+$text-color-4: #666666;
+$color-accent-1: #F18022;
+$color-accent-2: #FFEBD4;
+
+
+.textColor1{
+  color: $text-color-1 !important;
+}
+.textColor2{
+  color: $text-color-2 !important;
+}
+.textColor3{
+  color: $text-color-3 !important;
+}
+
+.backgroundColor1{
+  background: $color-accent-1 !important;;
+}
+$contaner-width: 1000px;
+
+
+
+
+$navbar-space: 76px;
+
+$v: random(113324234);

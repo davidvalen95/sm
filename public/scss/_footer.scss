@@ -1,0 +1,42 @@
+
+
+#footer{
+
+  .segment1{
+    background:
+            url("../image/footer/segment1-background.png?v=#{$v}"),
+            #DAD9BA;
+    height: 1000px;
+    width: 100%;
+    background-size: 100% 100%;
+    //background-size: 100% 100%;
+  }
+
+
+
+
+  .segment2{
+
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+    background: #DB933F;
+
+    a{
+      color: $text-color-2;
+      display: block;
+    }
+  }
+
+  .segment3{
+    background: #11123A;
+    color: $text-color-2;
+    .container{
+      padding-top: 8px;
+      padding-bottom: 8px;
+    }
+  }
+
+
+
+}

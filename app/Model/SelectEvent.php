@@ -24,6 +24,34 @@ class SelectEvent extends Model
 {
     //
 
+    /*
+     * updateUser
+     */
+
     protected $table = 'select_event';
     protected $fillable = ['key','value'];
+
+    public function getHistories(){
+        return $this->hasMany('\App\Model\History', 'select_event_id', 'id');
+    }
+
+    public static function getUpdateProfile(){
+        return SelectEvent::where('value', 'updateUser')->first();
+    }
+
+    public static function getActivePupil(){
+        return SelectEvent::where('value','activePupil')->first();
+    }
+    public static function getActiveTeacher(){
+        return SelectEvent::where('value','activeTeacher')->first();
+    }
+    public static function getOffPupil(){
+        return SelectEvent::where('value','offPupil')->first();
+    }
+    public static function getOffTeacher(){
+        return SelectEvent::where('value','offTeacher')->first();
+    }
+    public static function getUpdateWebsite(){
+        return SelectEvent::where('value','updateWebsite')->first();
+    }
 }

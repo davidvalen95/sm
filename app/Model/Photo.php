@@ -20,6 +20,12 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Photo wherePath($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Photo whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string|null $youtubeLink
+ * @property int $type
+ * @property int|null $branch_event_id
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Photo whereBranchEventId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Photo whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Photo whereYoutubeLink($value)
  */
 class Photo extends Model
 {
@@ -27,4 +33,13 @@ class Photo extends Model
 
     protected $table = 'photo';
     protected $fillable = ['path','nameSm','nameLg'];
+
+
+
+
+
+
+    public function getBranchEvent(){
+        return $this->belongsTo("App\Model\BranchEvent","branch_event_id","id");
+    }
 }

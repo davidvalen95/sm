@@ -34,7 +34,7 @@ class History extends Model
 
     public function getEvent(){
 
-        return $this->hasOne('App\Model\SelectEvent','select_event_id');
+        return $this->belongsTo('App\Model\SelectEvent','select_event_id');
     }
 
     public function getUser(){

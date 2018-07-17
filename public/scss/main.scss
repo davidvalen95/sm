@@ -1,0 +1,15 @@
+@import "variable";
+@import "function";
+@import "mixin";
+//@import '*';
+@import "global";
+
+
+@import "footer";
+
+@import "page/home";
+@import "page/visiMisi";
+
+@import "page/yearPlanning";
+@import "page/event";
+@import "page/contact";

@@ -60,14 +60,20 @@ class User extends Authenticatable
     ];
 
 
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+
+    }
+
     public function getPhoto(){
 
-        return $this->hasOne('App\Model\Photo','photo_id');
+        return $this->belongsTo('App\Model\Photo','photo_id','id');
     }
 
     public function getPreviledge(){
 
-        return $this->hasOne('App\Model\Previledge','previledge_id');
+        return $this->belongsTo('App\Model\Previledge','previledge_id','id');
     }
 
 
@@ -80,7 +86,7 @@ class User extends Authenticatable
     }
 
     public function getMeAsTeacherScores(){
-        return $this->hasMany('App\Model\Scores', 'teacher_user_id','id');
+        return $this->hasMany('App\Model\Score', 'teacher_user_id','id');
     }
     public function getMeAsOwners(){
         return $this->hasMany('App\Model\Branch', 'owner_user_id','id');
@@ -89,7 +95,7 @@ class User extends Authenticatable
         return $this->hasMany('App\Model\Branch', 'head_user_id','id');
     }
 
-    public function getBranches(){
+    public function getBranchUser(){
         return $this->hasMany('App\Model\BranchUser', 'user_id','id');
 
     }
@@ -104,6 +110,81 @@ class User extends Authenticatable
         return $this->hasMany('App\Model\Reply','user_id','id');
     }
 
+
+    public function getThreadsOpen(){
+        return $this->belongsToMany('App\Model\Thread', 'thread_user','user_id','thread_id')
+            ->withTimestamps();
+
+
+    }
+
+
+
+
+    public function getNameAttribute()
+    {
+        return  ucwords($this->attributes['name']);
+    }
+
+    public function getNbgAttribute()
+    {
+        return  ucwords($this->attributes['nbg']);
+    }
+
+    public function getPath(){
+        createDirIfNotExist("public/image/user/$this->id/");
+        return "public/image/user/$this->id/";
+    }
+
+    public function isMySelf(User $user){
+        return $this->id == $user->id;
+    }
+
+    public function isMaster(){
+        return $this->getPreviledge->value == 'master';
+    }
+
+    public function isTeacher(){
+        return $this->getPreviledge->value == 'teacher';
+    }
+    public function isPupil(){
+        return $this->getPreviledge->value == 'pupil';
+    }
+
+
+    public function isThisMyBranch(Branch $branch){
+
+        return $this->getBranchUser()->whereHas('getBranch',function($getBranch) use ($branch){
+            $getBranch->where('id', $branch->id);
+        })->count() > 0;
+
+    }
+
+    public function getBranchUserAsTeacher(){
+       return
+       $this->getBranchUser()->whereHas('getRole', function($role){
+           $role->where('value', 'teacher');
+       });
+
+
+    }
+    public function getBranchUserAsAPupil(){
+        return
+            $this->getBranchUser()->whereHas('getRole', function($role){
+                $role->where('value', 'pupil');
+            });
+
+    }
+
+    public function isMeHeadBranch(){
+        return Branch::where('head_user_id','=',$this->id)->count() > 0;
+    }
+
+
+    public function getAbsenceCommit(){
+
+        return $this->hasMany("App\Model\AbsenceBranch", "user_commiter_id","id");
+    }
 
 
 

@@ -1,0 +1,82 @@
+#page-event{
+
+
+
+
+  .segment1{
+
+    background:
+            url("../image/global/background-cloud.png?v=#{$v}"),
+            #DAD9BA
+
+             ;
+      background-repeat: repeat;
+      background-size: contain;
+      //background-size: 100% 100%;
+
+
+    $maxWidth: 325px;
+    $maxHeight: 375px;
+
+
+    .title{
+      color: #C52D29;
+    }
+    .galleryContainer{
+
+      position:relative;
+      max-height: $maxHeight;
+      max-width: $maxWidth;
+      overflow: hidden;
+      z-index: 1;
+      img{
+
+        max-height: $maxHeight;
+        max-width: $maxWidth;
+        z-index: 1;
+      }
+
+    }
+
+    .pictureContainer{
+      z-index: 99999;
+      overflow: hidden;
+      padding-top: 20px;
+      padding-right: 28px;
+      padding-bottom: 38px;
+      padding-left: 10px;
+      position:relative;
+      a{
+        z-index: 999999;
+
+      }
+      img{
+        z-index: 1;
+      }
+    }
+
+    .galleryHolder{
+
+      z-index: 4;
+      position:absolute;
+
+      top:0;right:0;bottom:0;left:0;
+
+
+      img{
+        z-index:5;
+        width: 100%;
+        height: 100%;
+      }
+
+
+    }
+
+
+
+  }
+
+
+
+
+}

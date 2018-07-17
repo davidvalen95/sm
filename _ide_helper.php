@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.4.36 on 2018-04-07 07:31:00.
+ * Generated for Laravel 5.4.36 on 2018-06-05 23:11:18.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -1897,6 +1897,18 @@ namespace Illuminate\Support\Facades {
         /**
          * Determine if the current user is authenticated.
          *
+         * @return \App\Model\User 
+         * @throws \Illuminate\Auth\AuthenticationException
+         * @static 
+         */ 
+        public static function authenticate()
+        {
+            return \Illuminate\Auth\SessionGuard::authenticate();
+        }
+        
+        /**
+         * Determine if the current user is authenticated.
+         *
          * @return bool 
          * @static 
          */ 
@@ -1914,18 +1926,6 @@ namespace Illuminate\Support\Facades {
         public static function guest()
         {
             return \Illuminate\Auth\SessionGuard::guest();
-        }
-        
-        /**
-         * Determine if the current user is authenticated.
-         *
-         * @return \App\Model\User 
-         * @throws \Illuminate\Auth\AuthenticationException
-         * @static 
-         */ 
-        public static function authenticate()
-        {
-            return \Illuminate\Auth\SessionGuard::authenticate();
         }
         
         /**
@@ -11208,32 +11208,6 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
-         * Register a view composer event.
-         *
-         * @param array|string $views
-         * @param \Closure|string $callback
-         * @return array 
-         * @static 
-         */ 
-        public static function composer($views, $callback)
-        {
-            return \Illuminate\View\Factory::composer($views, $callback);
-        }
-        
-        /**
-         * Register a view creator event.
-         *
-         * @param array|string $views
-         * @param \Closure|string $callback
-         * @return array 
-         * @static 
-         */ 
-        public static function creator($views, $callback)
-        {
-            return \Illuminate\View\Factory::creator($views, $callback);
-        }
-        
-        /**
          * Start a component rendering process.
          *
          * @param string $name
@@ -11282,6 +11256,19 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
+         * Register a view creator event.
+         *
+         * @param array|string $views
+         * @param \Closure|string $callback
+         * @return array 
+         * @static 
+         */ 
+        public static function creator($views, $callback)
+        {
+            return \Illuminate\View\Factory::creator($views, $callback);
+        }
+        
+        /**
          * Register multiple view composers via an array.
          *
          * @param array $composers
@@ -11291,6 +11278,19 @@ namespace Illuminate\Support\Facades {
         public static function composers($composers)
         {
             return \Illuminate\View\Factory::composers($composers);
+        }
+        
+        /**
+         * Register a view composer event.
+         *
+         * @param array|string $views
+         * @param \Closure|string $callback
+         * @return array 
+         * @static 
+         */ 
+        public static function composer($views, $callback)
+        {
+            return \Illuminate\View\Factory::composer($views, $callback);
         }
         
         /**
@@ -11602,6 +11602,66 @@ namespace Illuminate\Support\Facades {
         public static function renderTranslation()
         {
             return \Illuminate\View\Factory::renderTranslation();
+        }
+         
+    }
+ 
+}
+
+namespace Intervention\Image\Facades { 
+
+    class Image {
+        
+        /**
+         * Overrides configuration settings
+         *
+         * @param array $config
+         * @static 
+         */ 
+        public static function configure($config = array())
+        {
+            return \Intervention\Image\ImageManager::configure($config);
+        }
+        
+        /**
+         * Initiates an Image instance from different input types
+         *
+         * @param mixed $data
+         * @return \Intervention\Image\Image 
+         * @static 
+         */ 
+        public static function make($data)
+        {
+            return \Intervention\Image\ImageManager::make($data);
+        }
+        
+        /**
+         * Creates an empty image canvas
+         *
+         * @param integer $width
+         * @param integer $height
+         * @param mixed $background
+         * @return \Intervention\Image\Image 
+         * @static 
+         */ 
+        public static function canvas($width, $height, $background = null)
+        {
+            return \Intervention\Image\ImageManager::canvas($width, $height, $background);
+        }
+        
+        /**
+         * Create new cached image and run callback
+         * (requires additional package intervention/imagecache)
+         *
+         * @param \Closure $callback
+         * @param integer $lifetime
+         * @param boolean $returnObj
+         * @return \Image 
+         * @static 
+         */ 
+        public static function cache($callback, $lifetime = null, $returnObj = false)
+        {
+            return \Intervention\Image\ImageManager::cache($callback, $lifetime, $returnObj);
         }
          
     }
@@ -13696,6 +13756,8 @@ namespace  {
     class Validator extends \Illuminate\Support\Facades\Validator {}
 
     class View extends \Illuminate\Support\Facades\View {}
+
+    class Image extends \Intervention\Image\Facades\Image {}
  
 }
 

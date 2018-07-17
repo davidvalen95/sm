@@ -18,6 +18,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\SelectClass whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\SelectClass whereValue($value)
  * @mixin \Eloquent
+ * @property int|null $level
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\SelectClass whereLevel($value)
  */
 class SelectClass extends Model
 {
@@ -25,4 +27,21 @@ class SelectClass extends Model
 
     protected $table = 'select_class';
     protected $fillable = ['key','value'];
+
+
+
+    public function getAdvance(){
+
+        $advance = SelectClass::where('level', '>', $this->level)->get()->sortBy('level');
+
+        if($advance->count() == 0){
+            return $this;
+        }else{
+            return $advance->first();
+        }
+
+
+
+    }
+
 }
